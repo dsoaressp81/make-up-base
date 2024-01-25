@@ -77,7 +77,7 @@
       }
 
       var input = document.getElementById("filter-name"); // obtém um elemento input pelo seletor CSS
-      input.addEventListener("blur", function() { // adiciona um evento de mudança de valor ao input
+      input.addEventListener("input", function() { // adiciona um evento de mudança de valor ao input
         filter_Change();
       }, false); // indica que o evento não deve ser capturado
 
