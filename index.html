@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Make Up Catalog</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Make Up Catalog</h1>
+    </header>
+    <main>
+      <form class="catalog-control">
+        <div class="form-control">
+          <label for="filter-name">Nome:</label>
+          <input type="text" id="filter-name" />
+        </div>
+        <div class="form-control">
+          <label for="filter-brand">Marca:</label>
+          <select id="filter-brand">
+            <option value="Todos">Todos</option>
+          </select>
+        </div>
+        <div class="form-control">
+          <label for="filter-type">Tipo:</label>
+          <select id="filter-type">
+            <option value="Todos">Todos</option>
+          </select>
+        </div>
+        <div class="form-control">
+          <label for="sort"></label>
+          <select id="sort-type">
+            <option>Melhor Avaliados</option>
+            <option>Menores Preços</option>
+            <option>Maiores Preços</option>
+            <option>A-Z</option>
+            <option>Z-A</option>
+          </select>
+        </div>
+      </form>
+      <section class="catalog" id="catalog">
+      </section>
+
+    </main>
+    <script src="js/app.js"></script>
+    <script>
+      // Define uma função que será executada quando o evento onready ocorrer
+      function onReady() {
+        // Mostra uma mensagem no console
+        console.log("O documento está pronto!");
+        loadCatalog();
+      }
+
+      function filter_Change() {
+        //LIMPAR a section catalog
+        //window.alert("Oiiiii");
+        var div = document.getElementById("catalog"); // obtém um elemento div pelo seu id
+        div.innerHTML = "";
+        //recarregar com filtro
+        loadCatalog();
+      };
+
+      // Adiciona um listener para o evento onready
+      if (document.addEventListener) {
+        // Para navegadores modernos
+        document.addEventListener("DOMContentLoaded", onReady, false);
+      } else if (document.attachEvent) {
+        // Para navegadores antigos
+        document.attachEvent("onreadystatechange", function() {
+          if (document.readyState === "complete") {
+            document.detachEvent("onreadystatechange", arguments.callee);
+            onReady();
+          }
+        });
+      }
+
+      var input = document.getElementById("filter-name"); // obtém um elemento input pelo seletor CSS
+      input.addEventListener("blur", function() { // adiciona um evento de mudança de valor ao input
+        filter_Change();
+      }, false); // indica que o evento não deve ser capturado
+
+
+      var filterbrand = document.getElementById("filter-brand"); // obtém um elemento input pelo seletor CSS
+      filterbrand.addEventListener("blur", function() { // adiciona um evento de mudança de valor ao input
+        filter_Change();
+      }, false); // indica que o evento não deve ser capturado
+
+
+      var filtertype = document.getElementById("filter-type"); // obtém um elemento input pelo seletor CSS
+      filtertype.addEventListener("blur", function() { // adiciona um evento de mudança de valor ao input
+        filter_Change();
+      }, false); // indica que o evento não deve ser capturado
+
+
+    </script>
+
+  </body>
+</html>
